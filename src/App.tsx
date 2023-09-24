@@ -1,8 +1,12 @@
+import { Hero } from "./components/hero";
+
 function App() {
   return (
-    <>
-      <h1>Hola</h1>
-    </>
+    <main className="flex flex-col min-h-screen bg-[#0F172A]">
+      <div className="flex-grow">
+        <Hero />
+      </div>
+    </main>
   );
 }
 
