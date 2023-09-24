@@ -1,6 +1,6 @@
+import logo from "../assets/logo-placein.png";
+import heroImage from "../assets/hero-image.jpg";
 import { IconHeart } from "@tabler/icons-react";
-import logo from "../../public/logo-placein.png";
-import heroImage from "../../public/hero-image.jpg";
 
 export const Hero = () => {
   return (
