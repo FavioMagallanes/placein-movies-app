@@ -11,7 +11,7 @@ import {
 } from "@tabler/icons-react";
 import { MovieRating } from "./movie-rating";
 import { RootState } from "../../redux/store";
-import { addFavorite } from "../../redux/favoritesSlice";
+import { addFavorite } from "../../redux/favorites-slice";
 import { Movie } from "../../types/movies";
 
 export const MovieDetails: FC = () => {
@@ -145,10 +145,10 @@ export const MovieDetails: FC = () => {
                     {comments.map((comment, index) => (
                       <div
                         key={index}
-                        className="flex flex-col mb-4 animate-fade animate-delay-300 transition-all max-w-lg p-4 rounded-lg bg-transparent border border-gray-800"
+                        className="flex flex-col mb-4 animate-fade animate-delay-300 transition-all max-w-lg p-4"
                       >
                         <div className="flex justify-between items-center max-w-xl">
-                          <p className="text-gray-400 text-sm font-body overflow-hidden whitespace-nowrap text-overflow-ellipsis mr-3">
+                          <p className="text-gray-400 text-xs font-body overflow-hidden whitespace-nowrap text-overflow-ellipsis mr-3">
                             {comment.comment}
                           </p>
                           <button
@@ -158,7 +158,7 @@ export const MovieDetails: FC = () => {
                             Delete
                           </button>
                         </div>
-                        <p className="text-gray-600 text-xs">
+                        <p className="text-gray-600 text-[10px]">
                           {comment.date.toLocaleString()}
                         </p>
                       </div>

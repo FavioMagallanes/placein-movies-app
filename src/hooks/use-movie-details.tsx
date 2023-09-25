@@ -6,7 +6,10 @@ export const useMovieDetails = (id: string) => {
   const [movie, setMovie] = useState<Movie>();
   const [isLoading, setIsLoading] = useState(false);
   const [comments, setComments] = useState<{ comment: string; date: Date }[]>(
-    []
+    () => {
+      const storedComments = localStorage.getItem(`comments_${id}`);
+      return storedComments ? JSON.parse(storedComments) : [];
+    }
   );
 
   useEffect(() => {
@@ -28,7 +31,8 @@ export const useMovieDetails = (id: string) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setComments([...comments, { comment, date: new Date() }]);
+    const newComment = { comment, date: new Date() };
+    setComments(prevComments => [...prevComments, newComment]);
     setComment("");
   };
 
@@ -37,6 +41,10 @@ export const useMovieDetails = (id: string) => {
     newComments.splice(index, 1);
     setComments(newComments);
   };
+
+  useEffect(() => {
+    localStorage.setItem(`comments_${id}`, JSON.stringify(comments));
+  }, [comments, id]);
 
   return {
     comment,

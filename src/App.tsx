@@ -4,6 +4,7 @@ import { Favorites } from "./pages/favorite-movies-page";
 import { Layout } from "./components/layout";
 import { DetailMovies } from "./pages/detail-movies-page";
 import { NotFoundPage } from "./pages/not-found-page";
+import { Spinner } from "@material-tailwind/react";
 function App() {
   const routes = createBrowserRouter([
     {
@@ -27,7 +28,7 @@ function App() {
   ]);
   return (
     <div className="flex flex-col min-h-screen bg-[#0F172A]">
-      <RouterProvider router={routes} fallbackElement={<div>Loading...</div>} />
+      <RouterProvider router={routes} fallbackElement={<Spinner />} />
     </div>
   );
 }

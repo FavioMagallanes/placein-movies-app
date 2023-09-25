@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { removeFavorite } from "../../redux/favoritesSlice";
+import { removeFavorite } from "../../redux/favorites-slice";
 import { Movie } from "../../types/movies";
 
 export const FavoriteMovies = () => {

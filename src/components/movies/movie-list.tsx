@@ -1,21 +1,26 @@
-import { useMovieContext } from "../../context/movies/movies-context";
+import { useSelector } from "react-redux";
 import MovieCards from "./movie-cards";
+import { RootState, useAppDispatch } from "../../redux/store";
+import { Movie } from "../../types/movies";
+import { useEffect } from "react";
+import { fetchPopularMovies } from "../../redux/movies-slice";
+import { Spinner } from "@material-tailwind/react";
 
 export const MoviesList = () => {
-  const { state } = useMovieContext();
-  const isLoading = state.loading;
+  const dispatch = useAppDispatch();
+  const movies = useSelector((state: RootState) => state.movies.movies);
+  const loading = useSelector((state: RootState) => state.movies.loading);
+  useEffect(() => {
+    dispatch(fetchPopularMovies());
+  }, [dispatch]);
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-100"></div>
-      </div>
-    );
+  if (loading) {
+    return <Spinner />;
   }
 
   return (
     <div className="flex flex-wrap ">
-      {state.movies.map(movie => (
+      {movies.map((movie: Movie) => (
         <MovieCards key={movie.id} movie={movie} />
       ))}
     </div>
