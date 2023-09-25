@@ -1,31 +1,17 @@
 import { useState } from "react";
-// import { toast } from "sonner";
 import { searchMovies } from "../redux/movies-slice";
 import { useAppDispatch } from "../redux/store";
 
 export const InputSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useAppDispatch();
-  // const { searchMovies } = useMovieContext();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
 
-  // const handleSearch = async () => {
-  //   const searchResults = await searchMovies(searchTerm);
-  //   setSearchTerm("");
-
-  //   if (searchResults.length === 0) {
-  //     toast.error(
-  //       "No movies were found matching your search, please try again."
-  //     );
-  //   }
-  // };
-
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      // handleSearch();
       dispatch(searchMovies(searchTerm));
     }
   };

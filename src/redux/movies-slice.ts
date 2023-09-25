@@ -18,7 +18,9 @@ export const fetchPopularMovies = createAsyncThunk(
   "movies/fetchPopularMovies",
   async () => {
     const response = await axios.get<{ results: Movie[] }>(
-      `https://api.themoviedb.org/3/movie/popular?api_key=8f781d70654b5a6f2fa69770d1d115a3`
+      `${import.meta.env.VITE_BASE_URL}/movie/popular?api_key=${
+        import.meta.env.VITE_API_KEY
+      }&language=en-EN&page=1`
     );
     return response.data;
   }
@@ -28,7 +30,9 @@ export const searchMovies = createAsyncThunk(
   "movies/searchMovies",
   async (query: string) => {
     const response = await axios.get<{ results: Movie[] }>(
-      `https://api.themoviedb.org/3/search/movie?api_key=8f781d70654b5a6f2fa69770d1d115a3&query=${query}`
+      `${import.meta.env.VITE_BASE_URL}/search/movie?api_key=${
+        import.meta.env.VITE_API_KEY
+      }&query=${query}`
     );
     return response.data;
   }

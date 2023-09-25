@@ -17,9 +17,8 @@ export const MoviesList = () => {
   if (loading) {
     return <Spinner />;
   }
-
   return (
-    <div className="flex flex-wrap ">
+    <div className="md:flex md:flex-wrap ">
       {movies.map((movie: Movie) => (
         <MovieCards key={movie.id} movie={movie} />
       ))}
