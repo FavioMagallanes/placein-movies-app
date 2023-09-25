@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Movie } from "../../types/movies";
+import { Movie } from "../../../types/movies";
 import { Link } from "react-router-dom";
 
 interface MovieCardsProps {
@@ -11,7 +11,7 @@ const MovieCards: FC<MovieCardsProps> = ({ movie }) => {
     <div className="p-4 sm:block md:w-1/3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
       {movie.poster_path === null ? (
         <div className="block rounded-lg overflow-hidden">
-          <div className="relative aspect-square hover:cursor-not-allowed pointer-events-none">
+          <div className="relative aspect-square hover:cursor-not-allowed pointer-events-none border border-gray-50 border-opacity-10">
             <p>
               <span className="absolute top-0 right-0 px-4 py-2 text-white font-bold text-lg">
                 Movie not found
@@ -22,10 +22,10 @@ const MovieCards: FC<MovieCardsProps> = ({ movie }) => {
       ) : (
         <Link
           to={`/detail-movies/${movie.id}`}
-          className="block rounded-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-lg transform hover:scale-105"
+          className="block rounded-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-lg transform hover:scale-105 "
           key={movie.id}
         >
-          <div className="relative aspect-square">
+          <div className="relative aspect-square ">
             <img
               className="absolute inset-0 w-full h-full object-cover object-center rounded-lg"
               src={

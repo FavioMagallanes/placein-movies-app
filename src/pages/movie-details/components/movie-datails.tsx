@@ -1,6 +1,6 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useMovieDetails } from "../../hooks/use-movie-details";
+import { useMovieDetails } from "../../../hooks/use-movie-details";
 import { useParams } from "react-router-dom";
 import { DialogFooter, Textarea, Button } from "@material-tailwind/react";
 import {
@@ -9,10 +9,11 @@ import {
   IconHeartPlus,
   IconTrendingUp,
 } from "@tabler/icons-react";
-import { MovieRating } from "./movie-rating";
-import { RootState } from "../../redux/store";
-import { addFavorite } from "../../redux/favorites-slice";
-import { Movie } from "../../types/movies";
+import { MovieRating } from "../../favorite-movies/components/rating-movies";
+import { RootState } from "../../../redux/store";
+import { addFavorite } from "../../../redux/favorites-slice";
+import { Movie } from "../../../types/movies";
+import { voteColor } from "../../../utils/utils";
 
 export const MovieDetails: FC = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,14 @@ export const MovieDetails: FC = () => {
       setIsFavorite(true);
     }
   };
+
+  useEffect(() => {
+    if (favorites.some(favorite => favorite.id === movie?.id)) {
+      setIsFavorite(true);
+    } else {
+      setIsFavorite(false);
+    }
+  }, [favorites, movie]);
 
   return (
     <>
@@ -67,7 +76,7 @@ export const MovieDetails: FC = () => {
                   {movie?.title}
                 </h1>
                 <div className="flex items-center mb-4">
-                  <div className="text-gray-400 text-sm font-medium mr-2">
+                  <div className="text-gray-400 text-xs md:text-sm font-medium mr-2">
                     Add to favorites:
                   </div>
                   {isFavorite ? (
@@ -86,11 +95,11 @@ export const MovieDetails: FC = () => {
                   )}
                 </div>
                 <div className="flex mb-4">
-                  <span className="flex items-center text-gray-400 text-sm font-medium mr-4">
+                  <span className="flex items-center text-gray-400 text-xs md:text-sm font-medium mr-4">
                     <MovieRating />
                   </span>
                   <div className="flex flex-col sm:flex-row">
-                    <span className="flex items-center text-gray-400 text-sm font-medium mr-4">
+                    <span className="flex items-center text-gray-400 text-xs md:text-sm font-medium mr-4">
                       <IconHeartFilled
                         size={16}
                         stroke={2}
@@ -99,7 +108,7 @@ export const MovieDetails: FC = () => {
                       {movie?.vote_count}
                     </span>
 
-                    <span className="flex items-center text-gray-400 text-sm font-medium">
+                    <span className="flex items-center text-gray-400 text-xs md:text-sm font-medium">
                       <IconCalendarEvent
                         size={16}
                         stroke={2}
@@ -113,10 +122,10 @@ export const MovieDetails: FC = () => {
                 </div>
                 <div className="flex mb-4 items-center">
                   <div>
-                    <span className="text-gray-400 text-sm font-medium mr-2">
+                    <span className="text-gray-400 text-xs md:text-sm font-medium mr-2">
                       Popularity:
                     </span>
-                    <span className="text-gray-600 inline-flex items-center leading-none text-sm mr-3 mt-1">
+                    <span className="text-gray-600 inline-flex items-center leading-none text-xs md:text-sm mr-3 mt-1">
                       #{movie?.popularity}
                       <IconTrendingUp
                         size={16}
@@ -126,11 +135,21 @@ export const MovieDetails: FC = () => {
                     </span>
                   </div>
                   <div>
-                    <span className="text-gray-400 text-sm font-medium">
+                    <span className="text-gray-400 text-xs md:text-sm font-medium">
                       Original language:
                     </span>
-                    <span className="text-gray-600 inline-flex items-center leading-none text-sm mr-3 mt-1 ml-1">
+                    <span className="text-gray-600 inline-flex items-center leading-none text-xs md:text-sm mr-3 mt-1 ml-1">
                       {movie?.original_language.toUpperCase()}
+                    </span>
+                    <span className="text-gray-400 text-xs md:text-sm font-medium">
+                      Vote average:{"  "}
+                    </span>
+                    <span
+                      className={`text-${voteColor(
+                        movie?.vote_average ?? 0
+                      )} text-xs font-medium`}
+                    >
+                      {movie?.vote_average}
                     </span>
                   </div>
                 </div>

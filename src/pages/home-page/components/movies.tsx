@@ -1,5 +1,5 @@
 import { MoviesList } from "./movie-list";
-import { InputSearch } from "../input-search";
+import { InputSearch } from "./input-search";
 
 export const Movies = () => {
   return (

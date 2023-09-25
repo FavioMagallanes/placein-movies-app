@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Movie } from "../types/movies";
+import axios from "axios";
 
 export const useMovieDetails = (id: string) => {
   const [comment, setComment] = useState("");
@@ -15,12 +16,16 @@ export const useMovieDetails = (id: string) => {
   useEffect(() => {
     const fetchMovie = async () => {
       setIsLoading(true);
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=8f781d70654b5a6f2fa69770d1d115a3`
-      );
-      const data = await response.json();
-      setMovie(data);
-      setIsLoading(false);
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/${id}?api_key=8f781d70654b5a6f2fa69770d1d115a3`
+        );
+        setMovie(response.data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
     };
     fetchMovie();
   }, [id]);

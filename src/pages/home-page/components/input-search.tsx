@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { searchMovies } from "../redux/movies-slice";
-import { useAppDispatch } from "../redux/store";
+import { searchMovies } from "../../../redux/movies-slice";
+import { useAppDispatch } from "../../../redux/store";
 
 export const InputSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");

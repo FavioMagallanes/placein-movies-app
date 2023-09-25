@@ -1,10 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Home } from "./pages/home-page";
-import { Favorites } from "./pages/favorite-movies-page";
-import { Layout } from "./components/layout";
-import { DetailMovies } from "./pages/detail-movies-page";
-import { NotFoundPage } from "./pages/not-found-page";
+import { Home } from "./pages/home-page/home-page";
+import { Favorites } from "./pages/favorite-movies/favorite-movies-page";
+import { Layout } from "./components/ui/layout";
+import { NotFoundPage } from "./pages/not-found-page/not-found-page";
 import { Spinner } from "@material-tailwind/react";
+import { DetailMovies } from "./pages/movie-details/movie-details-page";
 function App() {
   const routes = createBrowserRouter([
     {
@@ -16,12 +16,12 @@ function App() {
         {
           path: "/favorites",
           element: <Favorites />,
-          loader: () => import("./pages/favorite-movies-page"),
+          loader: () => import("./pages/favorite-movies/favorite-movies-page"),
         },
         {
           path: "/detail-movies/:id",
           element: <DetailMovies />,
-          loader: () => import("./pages/detail-movies-page"),
+          loader: () => import("./pages/movie-details/movie-details-page"),
         },
       ],
     },
