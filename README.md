@@ -1,4 +1,4 @@
-# PLACEIN MOVIES - PALCEIN CHALLENGE
+# PLACEIN MOVIES - FRONTEND CHALLENGE
 
 Frontend challenge, with React, Typescript, Redux Toolkit and Tailwind
 
@@ -10,7 +10,6 @@ Frontend challenge, with React, Typescript, Redux Toolkit and Tailwind
   - [🚩 Note](#-note)
   - [🔥 Stack + Libs](#-stack--libs)
   - [🌐 API](#-weather-api)
-  - [✉️ Contact me](#️-contact-me)
 
 <h2>🛠️ Installation Steps:</h2>
 
