@@ -4,7 +4,7 @@ Frontend challenge, with React, Typescript, Redux Toolkit and Tailwind
 
 ### Table of content
 
-- [Potion shop](#potionshop)
+- [Placein Movies](#placein-movies---frontend-challenge)
   - [Table of content](#table-of-content)
   - [🚀 Installation Steps](#-installation-steps)
   - [🚩 Note](#-note)
