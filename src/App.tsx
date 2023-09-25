@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import { Home } from "./pages/home-page/home-page";
 import { Favorites } from "./pages/favorite-movies/favorite-movies-page";
 import { Layout } from "./components/ui/layout";
@@ -6,7 +6,7 @@ import { NotFoundPage } from "./pages/not-found-page/not-found-page";
 import { Spinner } from "@material-tailwind/react";
 import { DetailMovies } from "./pages/movie-details/movie-details-page";
 function App() {
-  const routes = createBrowserRouter([
+  const routes = createHashRouter([
     {
       path: "/",
       element: <Layout />,

@@ -1,6 +1,5 @@
 import { FC, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useMovieDetails } from "../../../hooks/use-movie-details";
 import { useParams } from "react-router-dom";
 import { DialogFooter, Textarea, Button } from "@material-tailwind/react";
 import {
@@ -14,6 +13,7 @@ import { RootState } from "../../../redux/store";
 import { addFavorite } from "../../../redux/favorites-slice";
 import { Movie } from "../../../types/movies";
 import { voteColor } from "../../../utils/utils";
+import { useMovieDetails } from "../../../hooks/useMovieDetails";
 
 export const MovieDetails: FC = () => {
   const dispatch = useDispatch();
