@@ -14,7 +14,7 @@ export const MoviesList = () => {
   }
 
   return (
-    <div className="flex flex-wrap -m-5">
+    <div className="flex flex-wrap ">
       {state.movies.map(movie => (
         <MovieCards key={movie.id} movie={movie} />
       ))}

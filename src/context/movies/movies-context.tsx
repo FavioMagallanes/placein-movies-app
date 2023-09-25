@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import {
   createContext,
   useReducer,
@@ -5,10 +6,11 @@ import {
   useEffect,
   ReactNode,
 } from "react";
-import { movieReducer } from "../reducers/movies-reducer";
-import { Action, Movie, MovieState } from "../../types/movies";
+
 import axios from "axios";
 import { toast } from "sonner";
+import { Action, Movie, MovieState } from "../../types/movies";
+import { movieReducer } from "../reducers/movies-reducer";
 
 interface MovieContextType {
   state: MovieState;
@@ -22,8 +24,8 @@ interface MovieProviderProps {
   children: ReactNode;
 }
 
-const API_KEY = "8f781d70654b5a6f2fa69770d1d115a3";
-const BASE_URL = "https://api.themoviedb.org/3/";
+const API_KEY = "8f781d70654b5a6f2fa69770d1d115a3"; //TODO: move to .env
+const BASE_URL = "https://api.themoviedb.org/3";
 
 export function MovieProvider({ children }: MovieProviderProps) {
   const [state, dispatch] = useReducer(movieReducer, {
